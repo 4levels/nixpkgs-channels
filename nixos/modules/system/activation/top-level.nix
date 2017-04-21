@@ -102,10 +102,10 @@ let
       name = let hn = config.networking.hostName;
                  nn = if (hn != "") then hn else "unnamed";
           in "nixos-system-${nn}-${config.system.nixosLabel}";
-      passAsFile = [ "buildCommand" ];
+      # passAsFile = [ "buildCommand" ];
       preferLocalBuild = true;
       allowSubstitutes = false;
-      buildCommand = systemBuilder;
+      buildCommandPath = systemBuilder;
 
       inherit (pkgs) utillinux coreutils;
       systemd = config.systemd.package;
